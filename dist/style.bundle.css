@@ -3410,24 +3410,38 @@ form div {
     form div input + span,
     form div textarea + span {
       position: absolute;
-      bottom: 0;
+      top: 0;
       left: 10px;
       width: 5px;
-      height: 100%;
       background: #FF1493; }
       @media only screen and (min-width: 0) and (max-width: 767px) {
         form div input + span,
         form div textarea + span {
           left: 0; } }
+    form div input.error,
+    form div textarea.error {
+      border: 5px solid red;
+      background: rgba(255, 0, 0, 0.2); }
+      form div input.error + span,
+      form div textarea.error + span {
+        background: red; }
   form div input {
+    height: 55px;
     padding: 10px; }
+    form div input + span {
+      height: 55px; }
   form div textarea {
     display: block;
-    height: 200px;
+    height: 100px;
     padding: 10px;
     resize: vertical; }
     form div textarea + span {
-      left: 0; }
+      left: 0;
+      height: 100px; }
+  form div .helper {
+    margin: 7px 0;
+    color: red;
+    font-size: 14.4px; }
 
 button {
   padding: 10px;
@@ -3435,6 +3449,11 @@ button {
   cursor: pointer;
   border: 5px solid black;
   color: white; }
+  button:disabled {
+    opacity: .5; }
+    button:disabled:hover {
+      background: inherit;
+      cursor: not-allowed; }
 
 h1,
 h2,
@@ -3453,7 +3472,7 @@ h1 {
       font-size: 23px; } }
 
 h2 {
-  font-size: 18px; }
+  font-size: 24px; }
   @media only screen and (min-width: 0) and (max-width: 767px) {
     h2 {
       font-size: 20px; } }
@@ -3883,6 +3902,13 @@ nav {
             #frame .frame-content > article.contact > div .container form button:hover {
               background: black;
               color: white; }
+              #frame .frame-content > article.contact > div .container form button:hover:disabled {
+                background: #FF1493;
+                color: black; }
+        #frame .frame-content > article.contact > div .container .confirmation {
+          display: none; }
+          #frame .frame-content > article.contact > div .container .confirmation.show {
+            display: block; }
     #frame .frame-content .scroll-wrap {
       position: absolute;
       left: 12%;

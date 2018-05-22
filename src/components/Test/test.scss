@@ -1,0 +1,542 @@
+@import "fonts";
+@import "mixins";
+
+html {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box
+}
+
+*,
+*::after,
+*::before {
+	-webkit-box-sizing: inherit;
+	box-sizing: inherit
+}
+::-webkit-scrollbar {
+    display: none;
+}
+html,
+button,
+input,
+select,
+textarea {
+	color: #000
+}
+body {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+	margin: 0 0;
+	font-size: 14px;
+	line-height: 1.4;
+	font-family: 'Sans Light', 'Assistant', 'helvetica-neue', 'arial', sans-serif;
+	background: #fdfdfd
+}
+hr {
+	display: block;
+	height: 1px;
+	border: 0;
+	background: #e44d26;
+	background-color: #e44d26;
+	color: #e44d26;
+	margin: 2em 0;
+	padding: 0
+}
+textarea {
+	resize: vertical
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: 'Montserrat';
+	font-weight: 900;
+	text-transform: uppercase
+}
+h1 {
+	font-size: 24px
+}
+h2 {
+	font-size: 20px
+}
+h3 {
+	font-size: 16px
+}
+
+
+span.display-none {
+	display: inline-block;
+	width: 0%;
+	height: 25px;
+    overflow: hidden;
+    -webkit-transition: width 1s ease-in-out;
+    -moz-transition: width 1s ease-in-out;
+    -o-transition: width 1s ease-in-out;
+    transition: width 1s ease-in-out;
+}
+header {
+	position: relative;
+    width: 100%;
+    height: 6%;
+	justify-content: space-between;
+	align-items: flex-end;
+	background: black;
+	color: white;
+
+	section {
+		align-items: flex-end;
+	}
+	a {
+		color: white;
+	}
+
+	h1 {
+		width: 400px;
+		height: 40px;
+		margin: 0 0;
+		padding: 0 0;
+		font-family: 'Montserrat';
+		&:hover {
+			span.display-none {
+				width: 105px;
+
+				&:last-child {
+					width: 150px;
+				}
+			}
+		}
+		
+	}
+
+	i {
+		font-size: 30px;
+	}
+}
+.container {
+	width: 80%;
+	margin: 0 auto;
+}
+.flex {
+	display: flex;
+}
+
+@keyframes navSlideFrom0 {
+	from { left: 0; }
+	to {
+		left: 96%;
+		right: 0;
+		transform: translateX(0%);
+	}
+}
+@keyframes navSlideFrom4 {
+	from { left: 4%; }
+	to {
+		left: 96%;
+		right: 0;
+		transform: translateX(0%);
+	}
+}
+@keyframes navSlideFrom8 {
+	from { left: 8%; }
+	to {
+		left: 96%;
+		right: 0;
+		transform: translateX(0%);
+	}
+}
+@keyframes navSlideFrom12 {
+	from { left: 12%; }
+	to {
+		left: 96%;
+		transform: translateX(0%);
+	}
+}
+@keyframes articleSlideDesktop {
+	from { width: 0%; }
+	to {
+		width: 88%;
+		transform: translateX(0%);
+	}
+}
+@keyframes navSlideDesktop {
+	from { left: 12%; }
+	to {
+		left: 96%;
+		transform: translateX(0%);
+	}
+}
+nav {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	flex-direction: row;
+	justify-content: flex-end;
+	&.home {
+		a.home {
+			&.current {
+				left: 96%;
+				animation: .4s linear navSlideDesktop;
+			}
+		}
+		a.portfolio {
+			left: 8%;
+		}
+		a.about {
+			left: 4%;
+		}
+		a.contact {
+			left: 0;
+		}
+	}
+	&.portfolio {
+		a.portfolio {
+			&.current {
+				left: 96%;
+				animation: .4s linear navSlideDesktop;
+
+				@include between(0, $screen-medium) {
+					top: 4%;
+					right: 0;
+					left: 0;
+				}
+
+				@keyframes portfolioNavSlideMobile {
+					from { top: 8%; }
+					to {
+						top: 92%;
+						transform: translateX(0%);
+					}
+				}
+			}
+		}
+		a.home {
+			left: 0%;
+			z-index: 99;
+		}
+		a.about {
+			left: 8%;
+			z-index: 99;
+		}
+		a.contact {
+			left: 4%;
+			z-index: 99;
+		}
+	}
+	&.about {
+		a.about {
+			&.current {
+				left: 96%;
+				right: 0;
+				animation: .4s linear navSlideDesktop;
+
+				@include between(0, $screen-medium) {
+					top: 8%;
+					right: 0;
+					left: 0;
+				}			
+			}
+		}
+		a.portfolio {
+			left: 0%; 
+			z-index: 99;
+
+			@include between(0, $screen-medium) {
+				top: 4%;
+				left: 0;
+			}
+		}
+		a.home {
+			left: 4%;
+			z-index: 99;
+		}
+		a.contact {
+			left: 8%;
+			z-index: 99;
+		}
+	}
+	&.contact {
+		a.contact {
+			&.current {
+				left: 96%;
+				right: 0;
+				animation: .4s linear navSlideDesktop;
+
+				@include between(0, $screen-medium) {
+					top: 12%;
+					left: 0;
+				}
+
+				@keyframes contactNavSlide {
+					from { left: 0; }
+					to {
+						left: 96%;
+						transform: translateX(0%);
+					}
+				}
+			}
+		}
+		a.home {
+			left: 8%;
+			z-index: 99;
+		}
+		a.portfolio {
+			left: 4%;
+			right: 4%;
+			z-index: 99;
+
+			@include between(0, $screen-medium) {
+				top: 4%;
+				left: 0;
+			}
+		}
+		a.about {
+			left: 0;
+			right: 8%;
+			z-index: 99;
+
+			@include between(0, $screen-medium) {
+				top: 8%;
+				left: 0;
+			}
+		}
+	}
+
+	a {
+		position: absolute;
+		display: flex;
+		height: 100%;
+		width: 4%;
+		left: auto;
+		right: auto;
+		justify-content: center;
+		align-items: center;
+		z-index: 11;
+		color: white;
+
+		@include between(0, $screen-medium) {
+			width: 100%;
+			height: 4%;
+		}
+
+		&.home {
+			right: 0;
+			background: $purple;
+
+			@include between(0, $screen-medium) {
+				top: 0;
+			}
+		}
+		&.portfolio {
+			left: 8%;
+			background: $yellow;
+
+			@include between(0, $screen-medium) {
+				top: 82%;
+				left: 0;
+			}
+		}
+		&.about {
+			left: 4%;
+			background: $blue;
+
+			@include between(0, $screen-medium) {
+				top: 86%;
+				left: 0;
+			}
+		}
+		&.contact {
+			left: 0;
+			background: $pink;
+
+			@include between(0, $screen-medium) {
+				top: 90%;
+				left: 0;
+			}
+		}
+		i {
+			display: block;
+			font-size: 30px;
+
+			@include between($screen-medium, $screen-large) {
+				font-size: 15px;
+			}
+		}
+	}
+}
+#frame {
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+	background: black;
+	color: #fff;
+
+	.frame-content {
+		position: fixed;
+		z-index: 9;
+		top: 5%;
+		left: 2.5%;
+		width: 95%;
+		height: 88%;
+		overflow: hidden;
+		background: white;
+		color: black;
+
+		@include between(0, $screen-medium) {
+			width: 90%;
+			height: 92%;
+			top: 4%;
+			left: 20px;
+		}
+		
+		> section {
+			position: relative;
+			width: 100%;
+			height: 100%;
+			z-index: 8;
+			overflow: hidden;
+
+			> div {
+				position: absolute;
+				width: 88%;
+				height: 94%;
+				left: 12%;
+				padding: 50px 0 0 75px;
+				overflow-y: scroll;
+				z-index: 9;
+
+				@include between(0, $screen-medium) {
+					top: 0;
+					width: 100%;
+					height: 84%;
+					padding: 0 0;
+				}
+
+				h2 {
+					width: 85%;
+					margin: 1em 0;
+					border-bottom: 3px solid black;
+					font-size: 34px;
+
+					span {
+						display: inline-block;
+						border-bottom: 10px solid #836fff;
+						padding-bottom: 0px;
+						margin-bottom: -3px;
+					}
+				}
+				p {
+					width: 85%;
+					font-size: 18px;
+					font-weight: 600;
+					font-family: 'Montserrat';
+				}
+
+			}
+
+			&.home {
+				div {
+					border: 20px solid $purple;
+					border-right: none;
+					animation: .4s linear articleSlideDesktop;
+
+					@include between(0, $screen-medium) {
+						left: 0;
+						border: 10px solid $purple;
+					}
+
+					::selection {
+						background: $purple;
+						text-shadow: none
+					}
+					a {
+						color: $purple;
+					}
+				}
+			}
+			&.portfolio {
+				div {
+					border: 20px solid $yellow;
+					border-right: none;
+					animation: .4s linear articleSlideDesktop;
+
+					@include between(0, $screen-medium) {
+						height: 86%;
+						left: 0;
+						border: 10px solid $yellow;
+					}
+
+					::selection {
+						background: yellow;
+						text-shadow: none;
+					}
+
+					h2 span {
+						border-bottom: 10px solid $yellow;
+					}
+					a {
+						color: $yellow;
+					}
+				}
+			}
+			&.about {
+				div {
+					border: 20px solid $blue;
+					border-right: none;
+					animation: .4s linear articleSlideDesktop;
+
+					@include between(0, $screen-medium) {
+						height: 90%;
+						left: 0;
+						border: 10px solid $blue;
+					}
+
+					::selection {
+						background: $blue;
+						text-shadow: none;
+					}
+
+					h2 span {
+						border-bottom: 10px solid $blue;
+					}
+					a {
+						color: $blue;
+					}
+				}
+			}
+			&.contact {
+				div {
+					border: 20px solid $pink;
+					border-right: none;
+					animation: .4s linear articleSlideDesktop;
+
+					@include between(0, $screen-medium) {
+						height: 94%;
+						left: 0;
+						border: 10px solid $pink;
+					}
+
+					::selection {
+						background: $pink;
+						text-shadow: none;
+					}
+
+					h2 span {
+						border-bottom: 10px solid $pink;
+					}
+					a {
+						color: $pink;
+					}
+				}
+			}
+		}
+	}
+}

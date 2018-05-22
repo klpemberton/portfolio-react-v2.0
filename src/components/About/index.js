@@ -88,7 +88,7 @@ const AboutContent = () => (
 	<div>
 		<h1><span>About Me</span></h1>
 		<div>
-			<p className="margin-0-b">I'm Kristine and I'm a web developer. I began creating websites as a little kid (here's my very first site, based on the old <em>Petz</em> PC games: <a href="https://geocities.ws/purrfectpetzplace" target="_blank">Purrfect Petz Place</a>), and that's still what I do today, with 8 years of hands-on professional experience at major corporations in Bloomington, Indiana and now San Luis Obispo, California. I'm currently a full-time Senior Front-end Developer at a large corporation in SLO.</p>
+			<p className="margin-0-b">I'm Kristine and I'm a web developer. I began creating websites as a little kid. Here's my very first site, <a href="https://geocities.ws/purrfectpetzplace" target="_blank">Purrfect Petz Place</a>, based on the old <em>Petz</em> PC games (turn on your ad blocker! Someone mirrored the Geocities servers long ago and flooded all the sites with ads). Making websites is still what I do today, with 8 years of hands-on professional experience at major corporations in Bloomington, Indiana and now San Luis Obispo, California. I'm currently a full-time Senior Front-end Developer at a large corporation in SLO.</p>
 		</div>
 		<div className="row">
 			<div className="col-6">
