@@ -4,7 +4,7 @@ import { NavLink, Switch, Route, withRouter } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import PropTypes from 'prop-types';
 
-import Header from '../Header/index';
+import Header from '../Header';
 import Home from '../Home';
 import Portfolio from '../Portfolio';
 import About from '../About';
