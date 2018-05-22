@@ -92,7 +92,7 @@ class Contact extends React.Component {
 			<Scrollbar>
 				<div>
 					<h1><span>Contact Me</span></h1>
-					<p className={`confirmation ${this.state.showConfirmation}`}>Thanks for reaching out! I'll get back to you asap at the email address you provided.</p>
+					<p className={`confirmation ${this.state.showConfirmation}`}>Thanks for reaching out! I will get back to you asap at the email address you provided.</p>
 					<form onSubmit={this.formHandler} className={this.state.showForm}>
 						<div className="row margin-2-b">
 							<div className="col-6 margin-2-b-mobile">
