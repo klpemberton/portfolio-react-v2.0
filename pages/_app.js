@@ -12,7 +12,7 @@ export default class App extends NextApp {
 		}
 
 		return {
-			pageProps,
+			pageProps
 		};
 	}
 

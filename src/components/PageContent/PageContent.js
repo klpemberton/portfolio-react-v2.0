@@ -1,8 +1,8 @@
-import React from "react";
-import PropTypes from "prop-types";
-import styled, { keyframes } from "styled-components";
-import { Scrollbar } from "react-scrollbars-custom";
-import { desktop, mobile } from "../../styles/theme";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled, { keyframes } from 'styled-components';
+import { Scrollbar } from 'react-scrollbars-custom';
+import { desktop, mobile } from '../../styles/theme';
 
 const contentSlideDesktop = keyframes`
   from { width: 0%; }
@@ -100,15 +100,15 @@ const Wrapper = styled.article`
 
 const Content = styled.div`
 	padding: 30px 45px 30px 30px;
-	${desktop`padding: 5% 10% 5% 8%;`}
+	${desktop`padding: 3% 10% 1% 8%;`}
 `;
 
 export default function PageContent({ children, pageTheme }) {
 	return (
-		<Border color={pageTheme === "_error" ? "error" : pageTheme}>
+		<Border color={pageTheme === '_error' ? 'error' : pageTheme}>
 			<ScrollbarSection
 				noDefaultStyles
-				color={pageTheme === "_error" ? "error" : pageTheme}
+				color={pageTheme === '_error' ? 'error' : pageTheme}
 			>
 				<Wrapper>
 					<Content>{children}</Content>
@@ -120,5 +120,5 @@ export default function PageContent({ children, pageTheme }) {
 
 PageContent.propTypes = {
 	children: PropTypes.node,
-	pageTheme: PropTypes.string,
+	pageTheme: PropTypes.string
 };
