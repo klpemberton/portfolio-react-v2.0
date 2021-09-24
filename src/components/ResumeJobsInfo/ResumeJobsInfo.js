@@ -1,9 +1,9 @@
-import React, { useCallback, useState } from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import { JobsFeatured, JobsAdditional } from './resumeData';
-import { FaChevronCircleRight } from 'react-icons/fa';
-import { desktop, mobile } from '../../styles/theme';
+import React, { useCallback, useState } from "react";
+import PropTypes from "prop-types";
+import styled from "styled-components";
+import { JobsFeatured, JobsAdditional } from "./resumeData";
+import { FaChevronCircleRight } from "react-icons/fa";
+import { desktop, mobile } from "../../styles/theme";
 
 const ResumeContent = styled.section``;
 
@@ -12,33 +12,29 @@ const Jobs = styled.div``;
 const Icon = styled.div``;
 
 const Details = styled.div`
-	visibility: hidden;
-
-	transition: 0.2s ease-in-out all;
+	padding-left: 40px;
 `;
 
 const JobDetails = styled.div`
-	${(props) => (props.isOpen ? 'height: 100%;' : 'height: 0;')}
-	transition: 0.2s ease-in-out all;
+	transform-origin: top;
+	${(props) =>
+		props.isOpen ? "transform: scaleY(100%);" : "transform: scaleY(0);"}
+
+	transition: 0.2s linear all;
 
 	${Details} {
-		transform-origin: top;
-		${(props) =>
-			props.isOpen
-				? 'visibility: visible; transform: scaleY(100%);'
-				: 'visibility: hidden; transform: scaleY(0);'}
 	}
 `;
 
 const JobItem = styled.div`
+	${(props) => (props.isOpen ? "height: auto;" : "height: 8.5vh;")}
 	border-bottom: 2px solid ${(props) => props.theme.colors.home};
+	overflow: hidden;
 
 	${Icon} {
-		svg {
-			transform: rotate(0deg);
-			transition: 0.2s ease-in-out all;
-			${(props) => props.isOpen && 'transform: rotate(90deg); '}
-		}
+		transform: rotate(0deg);
+		transition: 0.2s ease-in-out all;
+		${(props) => props.isOpen && "transform: rotate(90deg); "}
 	}
 `;
 
@@ -76,6 +72,11 @@ const JobTitle = styled.h4`
 			margin-bottom: 5px;
 		}
 	}
+`;
+
+const CompanyInfo = styled.div`
+	margin-bottom: 10px;
+	font-weight: 700;
 `;
 
 const Italic = styled.div`
@@ -150,7 +151,8 @@ function Job({ job }) {
 				aria-label={`Toggle details for job: ${job.title}`}
 			>
 				<Icon>
-					<FaChevronCircleRight size={18} />
+					{/* <FaChevronCircleRight size={18} /> */}
+					👉
 				</Icon>
 
 				<JobTitle>
@@ -163,6 +165,9 @@ function Job({ job }) {
 				{job.details.map((role, index) => {
 					return (
 						<Details key={index}>
+							<CompanyInfo>
+								{role.company} - {role.location}
+							</CompanyInfo>
 							{role.summary}
 							<br />
 							<Italic>Selected Accomplishments:</Italic>
@@ -185,7 +190,7 @@ function Job({ job }) {
 }
 
 Job.propTypes = {
-	job: PropTypes.object
+	job: PropTypes.object,
 };
 
 export default function Resume() {

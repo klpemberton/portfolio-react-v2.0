@@ -6,17 +6,29 @@ import {
 	FaEnvelope,
 	FaExclamationCircle,
 	FaHome,
-	FaUser
+	FaUser,
 } from "react-icons/fa";
 import { NavData } from "./navData";
 import Link from "next/link";
 import { desktop, mobile, useBreakpoint } from "../../styles/theme";
 
 const navSlideDesktop = keyframes`
-  from { left: 0%; }
+  from { 
+    left: 0;
+    transform: translateX(0%); 
+  }
 	to {
-		left:  ${props => props.position};
-		transform: translateX(0%);
+    left: ${(props) => props.position};
+		transform: translateX(${(props) => props.position});
+	}
+`;
+
+const navPositionSlideDesktop = keyframes`
+  from { 
+    left: 0;
+  }
+	to {
+    left: ${(props) => props.position};
 	}
 `;
 
@@ -26,14 +38,15 @@ const NavListItem = styled.li`
 	justify-content: center;
 	align-items: center;
 	z-index: 11;
-	background: ${props => props.backgroundColor};
+	background: ${(props) => props.backgroundColor};
 
 	${desktop`
-    ${props => props.position && `left: ${props.position};`}
     height: 100%;
     width: 4%;
+
+    ${(props) => props.position && `left: ${props.position};`}
   
-    ${props =>
+    ${(props) =>
 		props.isActive &&
 		css`
 			animation: ${navSlideDesktop} 0.4s linear;
@@ -41,7 +54,7 @@ const NavListItem = styled.li`
   `}
 
 	${mobile`
-    ${props => props.position && `top: ${props.position};`}
+    ${(props) => props.position && `top: ${props.position};`}
     left: 0;
     width: 100%;
     height: 6%;
@@ -94,7 +107,7 @@ export default function SiteNavigationItem({ activeRoute, isActive, route }) {
 		return null;
 	}
 
-	const getIcon = route => {
+	const getIcon = (route) => {
 		switch (route) {
 			case "/":
 				return <FaHome size={iconSize} />;
@@ -128,5 +141,5 @@ export default function SiteNavigationItem({ activeRoute, isActive, route }) {
 SiteNavigationItem.propTypes = {
 	activeRoute: PropTypes.string,
 	isActive: PropTypes.bool,
-	route: PropTypes.string
+	route: PropTypes.string,
 };
